@@ -1,0 +1,23 @@
+### npm ###
+node_modules
+
+### OSX ###
+.DS_Store
+.AppleDouble
+.LSOverride
+Icon
+
+# Thumbnails
+._*
+
+# Files that might appear on external disk
+.Spotlight-V100
+.Trashes
+
+### Ruby ###
+.bundle
+vendor
+Gemfile.lock
+
+### config ###
+ruby-to-arduino/config.yml
