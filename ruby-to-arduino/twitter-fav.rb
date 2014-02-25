@@ -1,9 +1,13 @@
 #!/usr/bin/ruby
 
 require 'bundler'
-Bundler.require
 require 'yaml'
 require 'pp'
+Bundler.require
+
+#ファボられたらシリアルポートに0を送る
+
+sp = SerialPort.new("/dev/cu.usbmodem1411", 9600, 8, 1, SerialPort::NONE)
 
 stream_config = YAML.load_file(File.expand_path(File.dirname(__FILE__) + '/config.yml'))
 
@@ -16,22 +20,16 @@ end
 #
 client = UserStream.client
 client.user do |status|
-  #if status.has_key? "text"
-  #  if status.in_reply_to_screen_name == "GeckoTang"
-  #    pp status.text
-  #    pp status.user.screen_name
-  #  end
-  #end
   if status.has_key? "event"
-    case status.event.to_sym
-    when :favorite
-      # ファボ
-      pp "@#{status.source.screen_name} favorited", status.target_object.text
-    when :unfavorite
-      # アンファボ
-      pp "@#{status.source.screen_name} unfavorited", status.target_object.text
-    else
-      # 実装されていないイベント
+    if status.target.screen_name == "GeckoTang"
+      case status.event.to_sym
+      when :favorite
+        # ファボ
+        sp.puts "0"
+      else
+        # 実装されていないイベント
+      end
     end
   end
 end
+sp.close
