@@ -20,4 +20,4 @@ vendor
 Gemfile.lock
 
 ### config ###
-ruby-to-arduino/config.yml
+ruby-to-arduino/config*.yml
