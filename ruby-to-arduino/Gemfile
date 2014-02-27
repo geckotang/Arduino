@@ -1,3 +1,4 @@
 source "https://rubygems.org/"
+gem 'gmail'
 gem 'userstream'
 gem 'serialport'
