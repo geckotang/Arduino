@@ -1,0 +1,36 @@
+#######################################
+# Syntax Coloring Map AquesTalk
+#######################################
+
+#######################################
+# Datatypes (KEYWORD1)
+#######################################
+
+AquesTalk	KEYWORD1
+
+#######################################
+# Methods and Functions (KEYWORD2)
+#######################################
+IsActive	KEYWORD2
+Synthe	KEYWORD2
+SyntheP	KEYWORD2
+SyntheS	KEYWORD2
+Write	KEYWORD2
+WriteP	KEYWORD2
+IsBusy	KEYWORD2
+GetResp	KEYWORD2
+Break	KEYWORD2
+SetSpeed	KEYWORD2
+GetSpeed	KEYWORD2
+GetVersion	KEYWORD2
+SetRom	KEYWORD2
+GetRom	KEYWORD2
+SetPitch	KEYWORD2
+GetPitch	KEYWORD2
+SetAccent	KEYWORD2
+GetAccent	KEYWORD2
+
+#######################################
+# Constants (LITERAL1)
+#######################################
+AQTK_I2C_ADDR	LITERAL1
