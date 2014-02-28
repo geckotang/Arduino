@@ -64,7 +64,7 @@ void loop(){
 
       digitalWrite(LED, HIGH);
       while(atp.IsBusy());
-      delay(2500);
+      delay(5000);
 
       Serial.println("currentMode: " + currentMode);
       Serial.println("target name: " + targetName);
