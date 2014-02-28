@@ -3,7 +3,7 @@
  */
 #include <ActionButton.h>
 
-ActionButton btn1 = ActionButton(7, ActionButton::PULL_UP);
+ActionButton btn1 = ActionButton(8, ActionButton::PULL_UP);
 
 // ボタンが押されたら
 void onPressed(ActionButton & btn) {
