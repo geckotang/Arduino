@@ -1,15 +1,15 @@
 #!/usr/bin/ruby
-
+# -*- coding: utf-8 -*-
 require "MeCab"
+require 'bundler'
 require 'yaml'
 require 'pp'
-require 'bundler'
 Bundler.require
 
-#
-# @see https://github.com/akira345/Ruby-Talk
-#
 def ruby_talk(in_str)
+	#debug
+	#in_str ="オープンソースカンファレンス 2012 Hiroshima http://www.ospn.jp/osc2012-hiroshima/ 10月20日 広島国際学院大学 中野キャンパス"
+
 	#入力文字を一旦すべて全角にする
 	in_str = Moji.han_to_zen(in_str)
 
@@ -150,59 +150,10 @@ def ruby_talk(in_str)
 	str_serial  = str_serial + wk_str_output
 end
 
-#
-# using kakasi in shell
-#
 def cmd_kakasi(str)
   result = open("| echo " + str + " | kakasi -Ha -Ka -Ja -Ea -ka -ja -i utf-8 -o utf-8")
   return result.gets.sub(/\n/,"")
 end
 
-
-#
-#ファボられたらシリアルポートに0を送る
-#
-
-port_file = "/dev/cu.usbmodem14241"
-baud_rate = 9600
-data_bits = 8
-stop_bits = 1
-parity = SerialPort::NONE
-sp = SerialPort.new(port_file, baud_rate, data_bits, stop_bits, parity)
-
-stream_config = YAML.load_file(File.expand_path(File.dirname(__FILE__) + '/config.yml'))
-
-UserStream.configure do |config|
-  config.consumer_key = stream_config[:consumer_key]
-  config.consumer_secret = stream_config[:consumer_secret]
-  config.oauth_token = stream_config[:oauth_token]
-  config.oauth_token_secret = stream_config[:oauth_token_secret]
-end
-
-client = UserStream.client
-client.user do |status|
-  if status.has_key? "event"
-    if status.target.screen_name == "GeckoTang"
-      case status.event.to_sym
-      when :favorite
-        # ファボ
-        s_name = status.source.screen_name
-        sp.puts 'A' + ruby_talk(s_name)
-      when :unfavorite
-        # アンファボ
-        s_name = status.source.screen_name
-        sp.puts 'B' + ruby_talk(s_name)
-      else
-        # 実装されていないイベント
-      end
-    end
-  elsif status.text
-    if Moji.downcase(status.text).index('geckotang')
-      s_name = status.user.screen_name
-      pp s_name
-      sp.puts 'C' + ruby_talk(s_name)
-    end
-  end
-end
-sp.close
-
+pp cmd_kakasi('日本語カナ、unkoです。');
+pp ruby_talk("geckotang");
