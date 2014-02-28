@@ -205,4 +205,3 @@ client.user do |status|
   end
 end
 sp.close
-
