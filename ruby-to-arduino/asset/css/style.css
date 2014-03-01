@@ -1,4 +1,152 @@
-body {
-	background-color: #111;
+* {
+	margin: 0;
+	padding: 0;
 }
 
+html {
+	font-size: 62.5%;
+}
+
+body {
+	font-size: 1.8rem;
+	font-family:"游明朝", "YuMincho", "Hiragino Mincho ProN", "Hiragino Mincho Pro", "ＭＳ 明朝", serif;
+	color: #111;
+	padding: 20px 20px 0;
+}
+
+.mod-headerV2 {
+	font-size: 2rem;
+}
+
+.mod-header {
+	text-align: center;
+}
+.mod-header-heading {
+	font-size: 6rem;
+	line-height: 1;
+}
+.mod-header-text {
+	font-size: 2rem;
+	line-height: 1;
+	margin-bottom: 20px;
+}
+
+.mod-text {
+	margin-bottom: 10px;
+}
+
+.mod-block {
+	background: #e6e5de;
+	padding: 20px 10px 10px;
+	margin-bottom: 20px;
+	border-radius: 10px;
+}
+
+.mod-form {}
+
+.mod-form-item {
+	margin-bottom: 10px;
+}
+
+.mod-form-selectWrap {
+	position: relative;
+	display: inline-block;
+	width: auto;
+}
+
+.mod-form-selectWrap:before {
+	position: absolute;
+	top: 2px;
+	right: 10px;
+	content: "▼";
+	-webkit-pointer-events: none;
+	pointer-events: none;
+}
+
+.mod-form-select {
+	display: inline-block;
+	font-size: 1.8rem;
+	font-family: inherit;
+	-webkit-appearance: none;
+	appearance: none;
+	padding: 0 1rem;
+	border: 2px solid #111;
+	border-radius: 6px;
+	background: #fff;
+}
+
+.mod-form-input {
+	display: inline-block;
+	font-size: 1.8rem;
+	font-family: inherit;
+	-webkit-appearance: none;
+	appearance: none;
+	padding: 3px 1rem 4px;
+	border: 2px solid #111;
+	border-radius: 6px;
+	background: #fff;
+	vertical-align: top;
+	margin-bottom: 10px;
+}
+
+.mod-form-checkbox {
+	position: relative;
+	width: 22px;
+	height: 22px;
+}
+.mod-form-checkbox > input{
+	position: relative;
+	top: 3px;
+	-webkit-appearance: none;
+	appearance: none;
+	border: 2px solid #111;
+	width:  22px;
+	height: 22px;
+	border-radius: 6px;
+	margin-right: 5px;
+	outline: none;
+	background: #fff;
+}
+
+.mod-form-checkbox > span:before {
+	content: "";
+	position: absolute;
+	top: -1px;
+	left: 3px;
+	line-height: 1;
+}
+
+.mod-form-checkbox > input:checked + span:before {
+	content: "✔";
+}
+
+.mod-btn {
+	display: inline-block;
+	font-family: inherit;
+	border: 2px solid #111;
+	background: none;
+	font-size: 1.8rem;
+	-webkit-appearance: none;
+	appearance: none;
+	border-radius: 6px;
+	padding: 5px 10px 2px;
+	color: #111;
+	text-decoration: none;
+	background: #fff;
+}
+
+.mod-btn--type-back {}
+
+.mod-btn--type-submit:disabled {
+	background: #ccc;
+	color: #aaa;
+	border-color: #aaa;
+}
+
+iframe {
+	line-height: 0;
+	display: inline;
+	position: absolute;
+	top: 0;
+	left: 0;
+}

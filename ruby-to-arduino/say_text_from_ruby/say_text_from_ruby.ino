@@ -17,28 +17,23 @@ boolean flag;
 void setup(){
   pinMode(LED, OUTPUT);
   Serial.begin(9600);
-  Serial.println("setupDone"); 
 }
 
 void loop(){
   if (Serial.available() > 0) {
     inByte = Serial.read();
-    if(
-        (inByte >= 65 && inByte <= 90) || (inByte >= 97 && inByte <= 122) 
-        || (inByte >= 48 && inByte <= 57) || (inByte == 43)
-        || (inByte == 61) || (inByte == 63)
-    ){
-      inMsg.concat(inByte);    
+    if(inByte != 10 || inByte != 13){
+      inMsg.concat(inByte);
     }
     // 受信し終わったらしゃべる
     if (inByte == 10 || inByte == 13){
-      inByte = 0;192.168.100.64
+      inByte = 0;
       //点灯
       digitalWrite(LED, HIGH);
       while(atp.IsBusy());
       delay(5000);
       atp.SyntheS(inMsg);
-      Serial.println(inMsg);
+      Serial.print("end");
       inMsg = "";
     }
     //消灯
