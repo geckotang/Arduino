@@ -52,8 +52,18 @@ void loop(){
   uView.print("AZ:");
   uView.print(chuck.readAccelX());
 
-  Serial.print("X:");
-  Serial.println(chuck.readJoyX());
+  Serial.print("{");
+  Serial.print("\"x\":");
+  Serial.print(chuck.readJoyX());
+  Serial.print(",\"y\":");
+  Serial.print(chuck.readJoyY());
+  Serial.print(",\"ax\":");
+  Serial.print(chuck.readAccelX());
+  Serial.print(",\"ay\":");
+  Serial.print(chuck.readAccelY());
+  Serial.print(",\"az\":");
+  Serial.print(chuck.readAccelZ());
+  Serial.println("}");
 
   if (chuck.cPressed() > 0 && chuck.zPressed() > 0) {
     Serial.println("C:1, Z:1");
