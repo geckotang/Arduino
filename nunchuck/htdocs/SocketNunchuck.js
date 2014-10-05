@@ -51,6 +51,7 @@
           }
         }
         //ヌンチャクのジョイスティックと加速度センサを判別する
+        //ev.originalEvent.data = {"x":125,"y":-34,"ax":-203.00,"ay":17.00,"az":135.00}
         if (/^{\"x\":/.test(ev.originalEvent.data)) {
           var chuck = JSON.parse(ev.originalEvent.data);
           ev.data.x = chuck.x;
