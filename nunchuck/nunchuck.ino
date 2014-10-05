@@ -66,11 +66,11 @@ void loop(){
   Serial.println("}");
 
   if (chuck.cPressed() > 0 && chuck.zPressed() > 0) {
-    Serial.println("C:1, Z:1");
+    Serial.println("{\"C\":true, \"Z\":true}");
   } else if (chuck.cPressed() > 0) {
-    Serial.println("C:1");
+    Serial.println("{\"C\":true, \"Z\":false}");
   } else if (chuck.zPressed() > 0) {
-    Serial.println("Z:1");
+    Serial.println("{\"C\":false, \"Z\":true}");
   }
 
   uView.display();
