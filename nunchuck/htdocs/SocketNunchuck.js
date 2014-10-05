@@ -4,7 +4,9 @@
   var ns = function(option){
     this.ws = {};
     this.vent = new EveEve;
-    this.option = option || {};
+    this.option = option || {
+      wsURL: 'ws://localhost:8784'
+    };
     return this;
   };
 
