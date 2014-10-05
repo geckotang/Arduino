@@ -63,12 +63,18 @@
           that.vent.trigger('nc:onAccelXYZChanged', {x: chuck.ax, y: chuck.ay, z: chuck.az});
         }
         //ヌンチャクのボタン入力を判別する
-        if (ev.originalEvent.data == 'Z:1') {
-          ev.data.key = 'Z';
-        } else if (ev.originalEvent.data == 'C:1') {
-          ev.data.key = 'C';
-        } else if (ev.originalEvent.data == 'C:1, Z:1') {
-          ev.data.key = 'CZ';
+        //ev.originalEvent.data = '{"C":true, "Z":true}'
+        //ev.originalEvent.data = '{"C":true, "Z":false}'
+        //ev.originalEvent.data = '{"C":false, "Z":false}'
+        if (/^{\"C\":/.test(ev.originalEvent.data)) {
+          var keys = JSON.parse(ev.originalEvent.data);
+          if (key.C === true && key.Z === true) {
+            ev.data.key = 'CZ';
+          } else if (key.Z === true) {
+            ev.data.key = 'Z';
+          } else if (key.C === true) {
+            ev.data.key = 'C';
+          }
         }
         that.vent.trigger('nc:onBtnPressed', ev.data.key);
         that.vent.trigger('ws:onMessage', ev);
