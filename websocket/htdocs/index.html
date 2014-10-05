@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>WebSocket + Arduino Sample</title>
+  <script src="jquery.min.js"></script>
+  <script src="script.js"></script>
+</head>
+<body>
+  <h1>SerialPort Server - WebSocket Interface sample</h1>
+  <div id="main">
+    <h2>Serial Port</h2>
+    <div class="websocket">
+      <input type="text" value="ws://localhost:8784" id="addr" size="40" />
+      <input type="button" value="open" class="btn" />
+      <div id="ws-state">websocket is closed</div>
+    </div>
+    <h2>LED</h2>
+    <div class="led">
+      <input type="button" class="led-on" value="ON" />
+      <input type="button" class="led-off" value="OFF" />
+    </div>
+  </div>
+</body>
+</html>
