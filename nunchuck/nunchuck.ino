@@ -26,7 +26,7 @@ void setup(){
 }
 
 void loop(){
-  delay(10);
+  delay(50);
   chuck.update();
 
   uView.clear(PAGE);
