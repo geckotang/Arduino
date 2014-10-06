@@ -68,11 +68,11 @@
         //ev.originalEvent.data = '{"C":false, "Z":false}'
         if (/^{\"C\":/.test(ev.originalEvent.data)) {
           var keys = JSON.parse(ev.originalEvent.data);
-          if (key.C === true && key.Z === true) {
+          if (keys.C === true && keys.Z === true) {
             ev.data.key = 'CZ';
-          } else if (key.Z === true) {
+          } else if (keys.Z === true) {
             ev.data.key = 'Z';
-          } else if (key.C === true) {
+          } else if (keys.C === true) {
             ev.data.key = 'C';
           }
         }
