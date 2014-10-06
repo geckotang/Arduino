@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>WebSocket + Arduino Sample</title>
+  <script src="jquery.min.js"></script>
+  <script src="eveeve.min.js"></script>
+  <script src="SocketNunchuck.js"></script>
+  <script src="script.js"></script>
+  <style>
+    #ball {
+      position: absolute;
+      top: 33px;
+      left: 124px;
+      width :100px;
+      height: 100px;
+      border-radius: 50px;
+      background: rgba(0,0,0,0.5);
+      backface-visibility: hidden;
+    }
+  </style>
+</head>
+<body>
+  <h1>SerialPort Server - WebSocket Interface sample</h1>
+  <div id="main">
+    <h2>Serial Port</h2>
+    <div class="websocket">
+      <div id="ws-state">websocket is closed</div>
+    </div>
+    <div id="ball"></div>
+    <h2>Nunchuck</h2>
+    <div class="nunchuck">
+      <div>加速度センサX：<span class="nunchuck__state-accelX"></span></div>
+      <div>加速度センサY：<span class="nunchuck__state-accelY"></span></div>
+      <div>加速度センサZ：<span class="nunchuck__state-accelZ"></span></div>
+      <div>ジョイスティックX：<span class="nunchuck__state-joyX"></span></div>
+      <div>ジョイスティックY：<span class="nunchuck__state-joyY"></span></div>
+      <div>ボタン：<span class="nunchuck__state-btn"></span></div>
+    </div>
+  </div>
+</body>
+</html>
