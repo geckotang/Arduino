@@ -224,6 +224,11 @@ class WiiChuck {
         return (int) (acos(readAccelY()/RADIUS)/ M_PI * 180.0);  // optionally swap 'RADIUS' for 'R()'
     }
 
+    // returns yaw in degrees
+    int readYaw() {
+        return (int) (180/M_PI)*atan2(sqrt(readAccelY()*readAccelY()+readAccelZ()*readAccelZ()), readAccelX());
+    }
+
     private:
         uint8_t _nunchuk_decode_byte (uint8_t x)
         {
