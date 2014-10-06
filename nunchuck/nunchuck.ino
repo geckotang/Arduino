@@ -34,12 +34,14 @@ void loop(){
 
   uView.setCursor(0,0);
   uView.print("C:");
-  uView.print(chuck.cPressed());
+  uView.print(chuck.buttonC);
+  //uView.print(chuck.cPressed());
   uView.print(" X:");
   uView.print(chuck.readJoyX());
   uView.setCursor(0,10);
   uView.print("Z:");
-  uView.print(chuck.zPressed());
+  uView.print(chuck.buttonZ);
+  //uView.print(chuck.zPressed());
   uView.print(" Y:");
   uView.print(chuck.readJoyY());
   uView.setCursor(0,20);
@@ -63,15 +65,29 @@ void loop(){
   Serial.print(chuck.readAccelY());
   Serial.print(",\"az\":");
   Serial.print(chuck.readAccelZ());
-  Serial.println("}");
-
-  if (chuck.cPressed() > 0 && chuck.zPressed() > 0) {
-    Serial.println("{\"C\":true, \"Z\":true}");
-  } else if (chuck.cPressed() > 0) {
-    Serial.println("{\"C\":true, \"Z\":false}");
-  } else if (chuck.zPressed() > 0) {
-    Serial.println("{\"C\":false, \"Z\":true}");
+  Serial.print(",\"button\":{");
+  //押された時
+  if (chuck.cPressed() && chuck.zPressed()) {
+    Serial.print("\"press_c\":true, \"press_z\":true,");
+  } else if (chuck.cPressed()) {
+    Serial.print("\"press_c\":true, \"press_z\":false,");
+  } else if (chuck.zPressed()) {
+    Serial.print("\"press_c\":false, \"press_z\":true,");
+  } else {
+    Serial.print("\"press_c\":false, \"press_z\":false,");
   }
+  //押し続けられている時
+  if (chuck.buttonC && chuck.buttonZ) {
+    Serial.print("\"hold_c\":true, \"hold_z\":true");
+  } else if (chuck.buttonC) {
+    Serial.print("\"hold_c\":true, \"hold_z\":false");
+  } else if (chuck.buttonZ) {
+    Serial.print("\"hold_c\":false, \"hold_z\":true");
+  } else {
+    Serial.print("\"hold_c\":false, \"hold_z\":false");
+  }
+  Serial.print("}");
+  Serial.println("}");
 
   uView.display();
 }

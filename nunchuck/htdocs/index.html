@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <title>WebSocket + Arduino Sample</title>
   <script src="jquery.min.js"></script>
+  <script src="underscore-min.js"></script>
   <script src="eveeve.min.js"></script>
   <script src="SocketNunchuck.js"></script>
   <script src="script.js"></script>
@@ -18,6 +19,13 @@
       background: rgba(0,0,0,0.5);
       backface-visibility: hidden;
     }
+    .nunchuck__debuginfo {
+      width: 500px;
+      height: 250px;
+      font-size: 18px;
+      border: 0;
+      resize: none;
+    }
   </style>
 </head>
 <body>
@@ -30,12 +38,7 @@
     <div id="ball"></div>
     <h2>Nunchuck</h2>
     <div class="nunchuck">
-      <div>加速度センサX：<span class="nunchuck__state-accelX"></span></div>
-      <div>加速度センサY：<span class="nunchuck__state-accelY"></span></div>
-      <div>加速度センサZ：<span class="nunchuck__state-accelZ"></span></div>
-      <div>ジョイスティックX：<span class="nunchuck__state-joyX"></span></div>
-      <div>ジョイスティックY：<span class="nunchuck__state-joyY"></span></div>
-      <div>ボタン：<span class="nunchuck__state-btn"></span></div>
+      <textarea class="nunchuck__debuginfo"></textarea>
     </div>
   </div>
 </body>

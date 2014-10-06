@@ -47,36 +47,34 @@
             ax: 0,
             ay: 0,
             az: 0,
-            key: ''
+            button: {
+              press_c: false,
+              press_z: false,
+              hold_c: false,
+              hold_z: false
+            }
           }
         }
         //ヌンチャクのジョイスティックと加速度センサを判別する
-        //ev.originalEvent.data = {"x":125,"y":-34,"ax":-203.00,"ay":17.00,"az":135.00}
-        if (/^{\"x\":/.test(ev.originalEvent.data)) {
-          var chuck = JSON.parse(ev.originalEvent.data);
-          ev.data.x = chuck.x;
-          ev.data.y = chuck.x;
-          ev.data.ax = chuck.ax;
-          ev.data.ay = chuck.ay;
-          ev.data.az = chuck.az;
-          that.vent.trigger('nc:onJoyXYChanged', {x: chuck.x, y: chuck.y});
-          that.vent.trigger('nc:onAccelXYZChanged', {x: chuck.ax, y: chuck.ay, z: chuck.az});
+        //ev.data = {
+        //  "x":125,
+        //  "y":-34,
+        //  "ax":-203.00,
+        //  "ay":17.00,
+        //  "az":135.00,
+        //  "button": {
+        //    "press_c": true,
+        //    "press_z": false
+        //    "hold_c": true,
+        //    "hold_z": false
+        //  }
+        //}
+        var chuck = JSON.parse(ev.originalEvent.data);
+        ev.data = _.extend(ev.data, chuck);
+        if (ev.data.button.press_c || ev.data.button.press_z) {
+          //ボタンが押された時だけ実行する
+          that.vent.trigger('nc:onBtnPressed', ev);
         }
-        //ヌンチャクのボタン入力を判別する
-        //ev.originalEvent.data = '{"C":true, "Z":true}'
-        //ev.originalEvent.data = '{"C":true, "Z":false}'
-        //ev.originalEvent.data = '{"C":false, "Z":false}'
-        if (/^{\"C\":/.test(ev.originalEvent.data)) {
-          var keys = JSON.parse(ev.originalEvent.data);
-          if (keys.C === true && keys.Z === true) {
-            ev.data.key = 'CZ';
-          } else if (keys.Z === true) {
-            ev.data.key = 'Z';
-          } else if (keys.C === true) {
-            ev.data.key = 'C';
-          }
-        }
-        that.vent.trigger('nc:onBtnPressed', ev.data.key);
         that.vent.trigger('ws:onMessage', ev);
       };
       that.ws.onclose = function(ev){
